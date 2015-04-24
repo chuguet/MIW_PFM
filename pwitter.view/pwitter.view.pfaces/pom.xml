@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<parent>
+		<groupId>es.upm.miw</groupId>
+		<artifactId>pwitter.view</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>pwitter.view.pfaces</artifactId>
+	<packaging>war</packaging>
+	<name>${project.groupId}.${project.artifactId}</name>
+
+	<build>
+		<finalName>${project.groupId}.${project.artifactId}</finalName>
+	</build>
+	
+	
+	<dependencies>
+		<dependency>
+			<groupId>es.upm.miw</groupId>
+			<artifactId>pwitter.controller</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+	</dependencies>
+
+</project>
