@@ -31,6 +31,8 @@
 		<jstl.version>1.2</jstl.version>
 		<jsf.version>2.2.8</jsf.version>
 		<primefaces.version>5.1</primefaces.version>
+		<pring.webmvc.version>4.1.6.RELEASE</pring.webmvc.version>
+		<apache.httpclient.version>4.3.5</apache.httpclient.version>
 	</properties>
 
 	<dependencyManagement>
@@ -49,6 +51,16 @@
 				<groupId>org.primefaces</groupId>
 				<artifactId>primefaces</artifactId>
 				<version>${primefaces.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-webmvc</artifactId>
+				<version>${spring.webmvc.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.httpcomponents</groupId>
+				<artifactId>httpclient</artifactId>
+				<version>${apache.httpclient.version}</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
