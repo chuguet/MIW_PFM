@@ -18,6 +18,11 @@
 	</build>
 
 	<dependencies>
+		<dependency>
+			<groupId>es.upm.miw</groupId>
+			<artifactId>pwitter.rest.core</artifactId>
+			<version>${project.version}</version>
+		</dependency>
 	</dependencies>
 
 </project>
