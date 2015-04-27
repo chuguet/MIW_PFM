@@ -31,8 +31,9 @@
 		<jstl.version>1.2</jstl.version>
 		<jsf.version>2.2.8</jsf.version>
 		<primefaces.version>5.1</primefaces.version>
-		<pring.webmvc.version>4.1.6.RELEASE</pring.webmvc.version>
+		<spring.version>4.1.6.RELEASE</spring.version>
 		<apache.httpclient.version>4.3.5</apache.httpclient.version>
+		<codehaus.jackson.version>1.8.5</codehaus.jackson.version>
 	</properties>
 
 	<dependencyManagement>
@@ -55,12 +56,22 @@
 			<dependency>
 				<groupId>org.springframework</groupId>
 				<artifactId>spring-webmvc</artifactId>
-				<version>${spring.webmvc.version}</version>
+				<version>${spring.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-core</artifactId>
+				<version>${spring.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.apache.httpcomponents</groupId>
 				<artifactId>httpclient</artifactId>
 				<version>${apache.httpclient.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.codehaus.jackson</groupId>
+				<artifactId>jackson-mapper-asl</artifactId>
+				<version>${codehaus.jackson.version}</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
