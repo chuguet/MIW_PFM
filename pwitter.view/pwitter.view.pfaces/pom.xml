@@ -14,7 +14,7 @@
 	<name>${project.groupId}.${project.artifactId}</name>
 
 	<build>
-		<finalName>${project.groupId}.${project.artifactId}</finalName>
+		<finalName>PWITTER_PRIMEFACES</finalName>
 	</build>
 	
 	
@@ -23,6 +23,19 @@
 			<groupId>es.upm.miw</groupId>
 			<artifactId>pwitter.controller</artifactId>
 			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.glassfish</groupId>
+			<artifactId>javax.faces</artifactId>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.primefaces</groupId>
+			<artifactId>primefaces</artifactId>
 		</dependency>
 	</dependencies>
 
