@@ -34,10 +34,16 @@
 		<spring.version>4.1.6.RELEASE</spring.version>
 		<apache.httpclient.version>4.3.5</apache.httpclient.version>
 		<codehaus.jackson.version>1.8.5</codehaus.jackson.version>
+		<javax.inject.version>1</javax.inject.version>
 	</properties>
 
 	<dependencyManagement>
 		<dependencies>
+			<dependency>
+				<groupId>javax.inject</groupId>
+				<artifactId>javax.inject</artifactId>
+				<version>${javax.inject.version}</version>
+			</dependency>
 			<dependency>
 				<groupId>javax.servlet</groupId>
 				<artifactId>jstl</artifactId>
@@ -64,6 +70,11 @@
 				<version>${spring.version}</version>
 			</dependency>
 			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-context</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+			<dependency>
 				<groupId>org.apache.httpcomponents</groupId>
 				<artifactId>httpclient</artifactId>
 				<version>${apache.httpclient.version}</version>
@@ -80,6 +91,7 @@
 		<module>pwitter.view</module>
 		<module>pwitter.controller</module>
 		<module>pwitter.rest</module>
+		<module>pwitter.model</module>
 	</modules>
 
 	<developers>
