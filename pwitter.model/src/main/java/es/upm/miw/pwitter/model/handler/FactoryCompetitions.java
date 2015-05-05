@@ -99,7 +99,7 @@ public class FactoryCompetitions {
 			local = createParticipant("Unicaja", Country.ESPANA);
 			visitor = createParticipant("Estudiantes", Country.ESPANA);
 			match = createMatch(local, visitor,
-					DATE_FORMATTER.parse("12/05/2012"),
+					DATE_FORMATTER.parse("12/05/2012 10:20"),
 					Result.VICTORIA_VISITANTE);
 			matchs.add(match);
 

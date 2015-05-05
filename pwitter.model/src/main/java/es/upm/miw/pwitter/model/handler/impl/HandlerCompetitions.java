@@ -3,6 +3,7 @@ package es.upm.miw.pwitter.model.handler.impl;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Component;
@@ -20,6 +21,10 @@ public class HandlerCompetitions implements IHandlerCompetitions {
 	private final List<Competition> competitions = new ArrayList<Competition>();
 
 	public HandlerCompetitions() {
+	}
+
+	@PostConstruct
+	public void init() {
 		this.addAllCompetition(this.factoryCompetitions.createDataSource());
 	}
 
@@ -32,7 +37,7 @@ public class HandlerCompetitions implements IHandlerCompetitions {
 	}
 
 	public void addAllCompetition(List<Competition> listCompetitions) {
-		this.competitions.addAll(competitions);
+		this.competitions.addAll(listCompetitions);
 	}
 
 	public void removeCompetition(Competition competition) {
@@ -63,6 +68,11 @@ public class HandlerCompetitions implements IHandlerCompetitions {
 			}
 		}
 		return result;
+	}
+
+	@Override
+	public Integer getNumCompetitions() {
+		return this.competitions.size();
 	}
 
 }

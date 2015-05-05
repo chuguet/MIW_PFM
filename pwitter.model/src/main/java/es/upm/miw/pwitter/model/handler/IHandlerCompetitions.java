@@ -19,4 +19,6 @@ public interface IHandlerCompetitions extends Iterator<Competition> {
 
 	Competition findCompetition(Competition competition);
 
+	Integer getNumCompetitions();
+
 }
