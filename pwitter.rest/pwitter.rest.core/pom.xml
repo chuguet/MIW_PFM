@@ -34,6 +34,11 @@
 			<groupId>org.codehaus.jackson</groupId>
 			<artifactId>jackson-mapper-asl</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>es.upm.miw</groupId>
+			<artifactId>pwitter.model</artifactId>
+			<version>${project.version}</version>
+		</dependency>
 	</dependencies>
 
 </project>

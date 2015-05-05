@@ -1,7 +1,6 @@
-package es.upm.miw.pwitter.model.handler;
+package es.upm.miw.pwitter.model.handler.impl;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -9,9 +8,11 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Component;
 
 import es.upm.miw.pwitter.model.beans.Competition;
+import es.upm.miw.pwitter.model.handler.FactoryCompetitions;
+import es.upm.miw.pwitter.model.handler.IHandlerCompetitions;
 
 @Component
-public class HandlerCompetitions implements Iterator<Competition> {
+public class HandlerCompetitions implements IHandlerCompetitions {
 
 	@Inject
 	private FactoryCompetitions factoryCompetitions;
@@ -51,6 +52,17 @@ public class HandlerCompetitions implements Iterator<Competition> {
 	@Override
 	public Competition next() {
 		return this.competitions.iterator().next();
+	}
+
+	@Override
+	public Competition findCompetition(Competition competition) {
+		Competition result = null;
+		for (Competition competitionIt : this.competitions) {
+			if (competitionIt.equals(competition)) {
+				result = competitionIt;
+			}
+		}
+		return result;
 	}
 
 }
