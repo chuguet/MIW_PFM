@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
 import org.springframework.http.MediaType;
 import org.springframework.web.accept.ContentNegotiationManagerFactoryBean;
 import org.springframework.web.servlet.View;
@@ -16,8 +17,11 @@ import org.springframework.web.servlet.view.ContentNegotiatingViewResolver;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.json.MappingJackson2JsonView;
 
+import es.upm.miw.pwitter.model.config.SpringModelConfiguration;
+
 @Configuration
 @EnableWebMvc
+@Import(SpringModelConfiguration.class)
 @ComponentScan("es.upm.miw.pwitter.rest.server")
 public class SpringRestConfiguration extends WebMvcConfigurerAdapter {
 
