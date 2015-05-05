@@ -9,7 +9,7 @@
 	</parent>
 
 	<modelVersion>4.0.0</modelVersion>
-	<artifactId>pwitter.rest.twitter</artifactId>
+	<artifactId>pwitter.rest.server</artifactId>
 	<packaging>jar</packaging>
 	<name>${project.groupId}.${project.artifactId}</name>
 
