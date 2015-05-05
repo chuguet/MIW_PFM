@@ -1,4 +1,4 @@
-package com.miw.pwitter.rest.server.controller;
+package es.upm.miw.pwitter.rest.server.controller;
 
 import java.util.List;
 import java.util.Map;

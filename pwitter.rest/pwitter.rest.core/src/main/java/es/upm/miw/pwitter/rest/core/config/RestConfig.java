@@ -10,13 +10,17 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.http.client.ClientHttpRequestFactory;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.web.client.RestTemplate;
 
+import es.upm.miw.pwitter.model.config.SpringModelConfiguration;
+
 @Configuration
+@Import(SpringModelConfiguration.class)
 @ComponentScan("es.upm.miw.pwitter.rest")
 @PropertySource("classpath:restClientConfig.properties")
 public class RestConfig {
