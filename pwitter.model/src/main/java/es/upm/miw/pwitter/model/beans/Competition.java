@@ -9,14 +9,20 @@ public class Competition {
 
 	}
 
-	public Competition(List<Match> matchs, String name, Country country,
-			Sport sport) {
-		super();
+	public Competition(Integer id) {
+		this.id = id;
+	}
+
+	public Competition(Integer id, List<Match> matchs, String name,
+			Country country, Sport sport) {
+		this(id);
 		this.matchs = matchs;
 		this.name = name;
 		this.country = country;
 		this.sport = sport;
 	}
+
+	private Integer id;
 
 	private List<Match> matchs;
 
@@ -62,9 +68,7 @@ public class Competition {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((country == null) ? 0 : country.hashCode());
-		result = prime * result + ((name == null) ? 0 : name.hashCode());
-		result = prime * result + ((sport == null) ? 0 : sport.hashCode());
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		return result;
 	}
 
@@ -77,14 +81,10 @@ public class Competition {
 		if (getClass() != obj.getClass())
 			return false;
 		Competition other = (Competition) obj;
-		if (country != other.country)
-			return false;
-		if (name == null) {
-			if (other.name != null)
+		if (id == null) {
+			if (other.id != null)
 				return false;
-		} else if (!name.equals(other.name))
-			return false;
-		if (sport != other.sport)
+		} else if (!id.equals(other.id))
 			return false;
 		return true;
 	}
@@ -94,6 +94,14 @@ public class Competition {
 			this.matchs = new ArrayList<Match>();
 		}
 		this.matchs.add(match);
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 }

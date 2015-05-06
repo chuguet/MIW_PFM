@@ -1,7 +1,7 @@
 package es.upm.miw.pwitter.model.handler.impl;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
@@ -18,7 +18,7 @@ public class HandlerCompetitions implements IHandlerCompetitions {
 	@Inject
 	private FactoryCompetitions factoryCompetitions;
 
-	private final List<Competition> competitions = new ArrayList<Competition>();
+	private final Set<Competition> competitions = new HashSet<Competition>();
 
 	public HandlerCompetitions() {
 	}
@@ -28,7 +28,7 @@ public class HandlerCompetitions implements IHandlerCompetitions {
 		this.addAllCompetition(this.factoryCompetitions.createDataSource());
 	}
 
-	public List<Competition> getCompetitions() {
+	public Set<Competition> getCompetitions() {
 		return this.competitions;
 	}
 
@@ -36,7 +36,7 @@ public class HandlerCompetitions implements IHandlerCompetitions {
 		this.competitions.add(competition);
 	}
 
-	public void addAllCompetition(List<Competition> listCompetitions) {
+	public void addAllCompetition(Set<Competition> listCompetitions) {
 		this.competitions.addAll(listCompetitions);
 	}
 

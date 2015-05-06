@@ -4,7 +4,9 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.stereotype.Component;
 
@@ -21,9 +23,9 @@ public class FactoryCompetitions {
 	private static final SimpleDateFormat DATE_FORMATTER = new SimpleDateFormat(
 			"dd/MM/yyyy HH:mm");
 
-	public Competition createCompetition(String name, Country country,
-			Sport sport, List<Match> matchs) {
-		return new Competition(matchs, name, country, sport);
+	public Competition createCompetition(Integer id, String name,
+			Country country, Sport sport, List<Match> matchs) {
+		return new Competition(id, matchs, name, country, sport);
 	}
 
 	public Match createMatch(Participant local, Participant visitor, Date date,
@@ -35,8 +37,8 @@ public class FactoryCompetitions {
 		return new Participant(name, country);
 	}
 
-	public List<Competition> createDataSource() {
-		List<Competition> competitions = new ArrayList<Competition>();
+	public Set<Competition> createDataSource() {
+		Set<Competition> competitions = new HashSet<Competition>();
 		try {
 
 			Participant local;
@@ -68,7 +70,7 @@ public class FactoryCompetitions {
 					DATE_FORMATTER.parse("20/05/2013 12:00"), Result.EMPATE);
 			matchs.add(match);
 
-			competition = createCompetition("Bundesliga", Country.ALEMANIA,
+			competition = createCompetition(1, "Bundesliga", Country.ALEMANIA,
 					Sport.FUTBOL, matchs);
 			competitions.add(competition);
 
@@ -89,7 +91,7 @@ public class FactoryCompetitions {
 					Result.VICTORIA_VISITANTE);
 			matchs.add(match);
 
-			competition = createCompetition("Calcio", Country.ITALIA,
+			competition = createCompetition(2, "Calcio", Country.ITALIA,
 					Sport.FUTBOL, matchs);
 			competitions.add(competition);
 
@@ -103,7 +105,7 @@ public class FactoryCompetitions {
 					Result.VICTORIA_VISITANTE);
 			matchs.add(match);
 
-			competition = createCompetition("Liga Endesa", Country.ESPANA,
+			competition = createCompetition(3, "Liga Endesa", Country.ESPANA,
 					Sport.BALONCESTO, matchs);
 			competitions.add(competition);
 		} catch (ParseException e) {
