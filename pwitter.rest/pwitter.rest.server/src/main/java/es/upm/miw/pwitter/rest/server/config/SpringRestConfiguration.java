@@ -12,7 +12,9 @@ import org.springframework.http.converter.json.MappingJackson2HttpMessageConvert
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
 
 import es.upm.miw.pwitter.model.config.SpringModelConfiguration;
 
@@ -35,6 +37,8 @@ public class SpringRestConfiguration extends WebMvcConfigurerAdapter {
 		MappingJackson2HttpMessageConverter converter = new MappingJackson2HttpMessageConverter();
 		ObjectMapper objectMapper = new ObjectMapper();
 		objectMapper.setDateFormat(new SimpleDateFormat(PATTERN_DATE));
+		objectMapper.enable(SerializationFeature.WRITE_ENUMS_USING_TO_STRING);
+		objectMapper.enable(DeserializationFeature.READ_ENUMS_USING_TO_STRING);
 		converter.setObjectMapper(objectMapper);
 		return converter;
 	}
