@@ -9,6 +9,9 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Component;
 
 import es.upm.miw.pwitter.model.beans.Competition;
+import es.upm.miw.pwitter.model.exceptions.CompetitionDeleteException;
+import es.upm.miw.pwitter.model.exceptions.CompetitionInsertException;
+import es.upm.miw.pwitter.model.exceptions.CompetitionUpdateException;
 import es.upm.miw.pwitter.model.handler.FactoryCompetitions;
 import es.upm.miw.pwitter.model.handler.IHandlerCompetitions;
 
@@ -33,7 +36,11 @@ public class HandlerCompetitions implements IHandlerCompetitions {
 	}
 
 	public void addCompetition(Competition competition) {
-		this.competitions.add(competition);
+		boolean insertCorrectly = this.competitions.add(competition);
+		if (insertCorrectly == false) {
+			throw new CompetitionInsertException(
+					"La competition no se ha insertado porque ya exisitia");
+		}
 	}
 
 	public void addAllCompetition(Set<Competition> listCompetitions) {
@@ -41,12 +48,21 @@ public class HandlerCompetitions implements IHandlerCompetitions {
 	}
 
 	public void removeCompetition(Competition competition) {
-		this.competitions.remove(competition);
+		boolean deleteCorrectly = this.competitions.remove(competition);
+		if (deleteCorrectly == false) {
+			throw new CompetitionDeleteException(
+					"La competition no se ha borrado porque no exisitia");
+		}
 	}
 
 	public void updateCompetition(Competition competition) {
-		this.removeCompetition(competition);
-		this.addCompetition(competition);
+		boolean deleteCorrectly = this.competitions.remove(competition);
+		if (deleteCorrectly == false) {
+			throw new CompetitionUpdateException(
+					"La competition no se ha actualizado porque no exisitia");
+		} else {
+			this.addCompetition(competition);
+		}
 	}
 
 	@Override
