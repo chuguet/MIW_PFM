@@ -26,7 +26,7 @@ public class CompetitionController {
 	private IHandlerCompetitions handlerCompetitions;
 
 	@RequestMapping(method = RequestMethod.POST)
-	public Message doPost(@RequestBody Competition competition) {
+	public Message insertCompetition(@RequestBody Competition competition) {
 		LOG.info("Se inserta una competicion");
 		handlerCompetitions.addCompetition(competition);
 		Message result = new Message("Insertado correctamente", Boolean.TRUE);
@@ -51,14 +51,14 @@ public class CompetitionController {
 	public Message updateCompetition(@RequestBody Competition competition) {
 		LOG.info("Se actualiza una competicion");
 		handlerCompetitions.updateCompetition(competition);
-		Message result = new Message("Borrado correctamente", Boolean.TRUE);
+		Message result = new Message("Actualizado correctamente", Boolean.TRUE);
 		return result;
 	}
 
-	@RequestMapping(method = RequestMethod.DELETE)
-	public Message deleteCompetition(@RequestBody Competition competition) {
+	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+	public Message deleteCompetition(@PathVariable("id") Integer id) {
 		LOG.info("Se borra una competicion");
-		handlerCompetitions.removeCompetition(competition);
+		handlerCompetitions.removeCompetition(new Competition(id));
 		Message result = new Message("Borrado correctamente", Boolean.TRUE);
 		return result;
 	}

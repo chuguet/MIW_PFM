@@ -13,13 +13,17 @@ public class Competition {
 		this.id = id;
 	}
 
-	public Competition(Integer id, List<Match> matchs, String name,
-			Country country, Sport sport) {
+	public Competition(Integer id, String name, Country country, Sport sport) {
 		this(id);
-		this.matchs = matchs;
 		this.name = name;
 		this.country = country;
 		this.sport = sport;
+	}
+
+	public Competition(Integer id, List<Match> matchs, String name,
+			Country country, Sport sport) {
+		this(id, name, country, sport);
+		this.matchs = matchs;
 	}
 
 	private Integer id;
