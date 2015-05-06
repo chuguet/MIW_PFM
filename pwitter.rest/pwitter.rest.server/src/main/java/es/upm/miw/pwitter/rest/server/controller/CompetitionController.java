@@ -17,6 +17,7 @@ import es.upm.miw.pwitter.model.beans.Message;
 import es.upm.miw.pwitter.model.handler.IHandlerCompetitions;
 
 @RestController
+@RequestMapping("/competition")
 public class CompetitionController {
 
 	private final static Log LOG = LogFactory

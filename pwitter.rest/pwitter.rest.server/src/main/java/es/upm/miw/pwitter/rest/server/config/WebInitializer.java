@@ -12,7 +12,6 @@ public class WebInitializer implements WebApplicationInitializer {
 
 	@Override
 	public void onStartup(ServletContext container) throws ServletException {
-
 		AnnotationConfigWebApplicationContext ctx = new AnnotationConfigWebApplicationContext();
 		ctx.register(SpringRestConfiguration.class);
 		ctx.setServletContext(container);
