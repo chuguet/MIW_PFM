@@ -15,9 +15,10 @@ import org.springframework.web.bind.annotation.RestController;
 import es.upm.miw.pwitter.model.beans.Competition;
 import es.upm.miw.pwitter.model.beans.Message;
 import es.upm.miw.pwitter.model.handler.IHandlerCompetitions;
+import es.upm.miw.pwitter.rest.core.uris.Uris;
 
 @RestController
-@RequestMapping("/competition")
+@RequestMapping(value = Uris.COMPETITION)
 public class CompetitionController {
 
 	private final static Log LOG = LogFactory
