@@ -1,4 +1,4 @@
-package es.upm.miw.pwitter.rest.core.config;
+package es.upm.miw.pwitter.rest.client.config;
 
 import org.apache.http.HttpHost;
 import org.apache.http.client.HttpClient;

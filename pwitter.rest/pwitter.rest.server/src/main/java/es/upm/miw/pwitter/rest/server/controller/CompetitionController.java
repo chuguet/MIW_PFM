@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import es.upm.miw.pwitter.model.beans.Competition;
@@ -27,7 +26,7 @@ public class CompetitionController {
 	private IHandlerCompetitions handlerCompetitions;
 
 	@RequestMapping(method = RequestMethod.POST)
-	public @ResponseBody Message doPost(@RequestBody Competition competition) {
+	public Message doPost(@RequestBody Competition competition) {
 		LOG.info("Se inserta una competicion");
 		handlerCompetitions.addCompetition(competition);
 		Message result = new Message("Insertado correctamente", Boolean.TRUE);
@@ -35,13 +34,13 @@ public class CompetitionController {
 	}
 
 	@RequestMapping(method = RequestMethod.GET)
-	public @ResponseBody Set<Competition> getAllCompetitions() {
+	public Set<Competition> getAllCompetitions() {
 		LOG.info("Se recuperan todas las competiciones");
 		return handlerCompetitions.getCompetitions();
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	public @ResponseBody Competition getCompetitionByNameCountryAndSport(
+	public Competition getCompetitionByNameCountryAndSport(
 			@PathVariable("id") Integer id) {
 		LOG.info("Se recupera una competicion");
 		Competition competition = new Competition(id);
@@ -49,8 +48,7 @@ public class CompetitionController {
 	}
 
 	@RequestMapping(method = RequestMethod.PUT)
-	public @ResponseBody Message updateCompetition(
-			@RequestBody Competition competition) {
+	public Message updateCompetition(@RequestBody Competition competition) {
 		LOG.info("Se actualiza una competicion");
 		handlerCompetitions.updateCompetition(competition);
 		Message result = new Message("Borrado correctamente", Boolean.TRUE);
@@ -58,8 +56,7 @@ public class CompetitionController {
 	}
 
 	@RequestMapping(method = RequestMethod.DELETE)
-	public @ResponseBody Message deleteCompetition(
-			@RequestBody Competition competition) {
+	public Message deleteCompetition(@RequestBody Competition competition) {
 		LOG.info("Se borra una competicion");
 		handlerCompetitions.removeCompetition(competition);
 		Message result = new Message("Borrado correctamente", Boolean.TRUE);
