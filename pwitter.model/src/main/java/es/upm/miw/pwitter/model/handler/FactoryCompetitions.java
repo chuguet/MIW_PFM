@@ -28,13 +28,13 @@ public class FactoryCompetitions {
 		return new Competition(id, matchs, name, country, sport);
 	}
 
-	public Match createMatch(Participant local, Participant visitor, Date date,
-			Result result) {
-		return new Match(local, visitor, date, result);
+	public Match createMatch(Integer id, Participant local,
+			Participant visitor, Date date, Result result) {
+		return new Match(id, local, visitor, date, result);
 	}
 
-	public Participant createParticipant(String name, Country country) {
-		return new Participant(name, country);
+	public Participant createParticipant(String name) {
+		return new Participant(name);
 	}
 
 	public Set<Competition> createDataSource() {
@@ -50,23 +50,23 @@ public class FactoryCompetitions {
 			// COMPETICION BUNDESLIGA
 			matchs = new ArrayList<Match>();
 
-			local = createParticipant("Hamburgo", Country.ALEMANIA);
-			visitor = createParticipant("Schalke 04", Country.ALEMANIA);
-			match = createMatch(local, visitor,
+			local = createParticipant("Hamburgo");
+			visitor = createParticipant("Schalke 04");
+			match = createMatch(1, local, visitor,
 					DATE_FORMATTER.parse("20/05/2016 22:00"),
 					Result.SIN_DISPUTAR);
 			matchs.add(match);
 
-			local = createParticipant("Hannover 96", Country.ALEMANIA);
-			visitor = createParticipant("Bayer Munich", Country.ALEMANIA);
-			match = createMatch(local, visitor,
+			local = createParticipant("Hannover 96");
+			visitor = createParticipant("Bayer Munich");
+			match = createMatch(2, local, visitor,
 					DATE_FORMATTER.parse("10/05/2014 21:00"),
 					Result.VICTORIA_LOCAL);
 			matchs.add(match);
 
-			local = createParticipant("Borussia Dortmund", Country.ALEMANIA);
-			visitor = createParticipant("Werder Bremen", Country.ALEMANIA);
-			match = createMatch(local, visitor,
+			local = createParticipant("Borussia Dortmund");
+			visitor = createParticipant("Werder Bremen");
+			match = createMatch(3, local, visitor,
 					DATE_FORMATTER.parse("20/05/2013 12:00"), Result.EMPATE);
 			matchs.add(match);
 
@@ -77,16 +77,16 @@ public class FactoryCompetitions {
 			// COMPETICION CALCIO
 			matchs = new ArrayList<Match>();
 
-			local = createParticipant("Juventus", Country.ITALIA);
-			visitor = createParticipant("Napoles", Country.ITALIA);
-			match = createMatch(local, visitor,
+			local = createParticipant("Juventus");
+			visitor = createParticipant("Napoles");
+			match = createMatch(4, local, visitor,
 					DATE_FORMATTER.parse("20/05/2013 22:00"),
 					Result.VICTORIA_LOCAL);
 			matchs.add(match);
 
-			local = createParticipant("Milan AC", Country.ITALIA);
-			visitor = createParticipant("Palermo", Country.ITALIA);
-			match = createMatch(local, visitor,
+			local = createParticipant("Milan AC");
+			visitor = createParticipant("Palermo");
+			match = createMatch(5, local, visitor,
 					DATE_FORMATTER.parse("20/05/2012 21:00"),
 					Result.VICTORIA_VISITANTE);
 			matchs.add(match);
@@ -98,9 +98,9 @@ public class FactoryCompetitions {
 			// COMPETICION ENDESA
 			matchs = new ArrayList<Match>();
 
-			local = createParticipant("Unicaja", Country.ESPANA);
-			visitor = createParticipant("Estudiantes", Country.ESPANA);
-			match = createMatch(local, visitor,
+			local = createParticipant("Unicaja");
+			visitor = createParticipant("Estudiantes");
+			match = createMatch(6, local, visitor,
 					DATE_FORMATTER.parse("12/05/2012 10:20"),
 					Result.VICTORIA_VISITANTE);
 			matchs.add(match);

@@ -120,22 +120,20 @@
 				<table class="table table-striped">
 					<thead>
 						<tr>
+							<th>#</th>
 							<th>Match date</th>
 							<th>Result</th>
 							<th>Local</th>
-							<th>Local Country</th>
 							<th>Visitor</th>
-							<th>Visitor Country</th>
 						</tr>
 					</thead>
 					<tbody>
 						<tr ng-repeat="match in competition.matchs">
+							<td>{{ match.id }}</td>
 							<td>{{ match.date }}</td>
 							<td>{{ match.result }}</td>
 							<td>{{ match.local.name }}</td>
-							<td>{{ match.local.country }}</td>
 							<td>{{ match.visitor.name }}</td>
-							<td>{{ match.visitor.country }}</td>
 						</tr>
 					</tbody>
 				</table>
