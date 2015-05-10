@@ -36,11 +36,24 @@ public class HandlerCompetitions implements IHandlerCompetitions {
 	}
 
 	public void addCompetition(Competition competition) {
+		Integer id = this.getLastCorrectId();
+		competition.setId(id);
 		boolean insertCorrectly = this.competitions.add(competition);
 		if (insertCorrectly == false) {
 			throw new CompetitionInsertException(
 					"La competition no se ha insertado porque ya exisitia");
 		}
+	}
+
+	private Integer getLastCorrectId() {
+		Integer id = 1;
+		for (Competition competition : this.competitions) {
+			if (competition.getId() > id) {
+				id = competition.getId();
+			}
+		}
+		id++;
+		return id;
 	}
 
 	public void addAllCompetition(Set<Competition> listCompetitions) {
@@ -61,7 +74,7 @@ public class HandlerCompetitions implements IHandlerCompetitions {
 			throw new CompetitionUpdateException(
 					"La competition no se ha actualizado porque no exisitia");
 		} else {
-			this.addCompetition(competition);
+			this.competitions.add(competition);
 		}
 	}
 

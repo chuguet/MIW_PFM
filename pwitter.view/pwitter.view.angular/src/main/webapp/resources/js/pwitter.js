@@ -1,49 +1,79 @@
-var PwitterControllers = angular.module('PwitterControllers', []);
+var PwitterControllers = angular.module('PwitterControllers', []),
+	URI = "http://localhost:8080/api/";
 
-PwitterControllers.controller('CompetitionListController', function($scope, $http) {
-	$scope.changeRoute = function(url, forceReload) {
-        $scope = $scope || angular.element(document).scope();
-        if(forceReload || $scope.$$phase) { // that's right TWO dollar signs: $$phase
-            window.location = url;
-        } else {
-            $location.path(url);
-            $scope.$apply();
-        }
-    };
-	$http.get("http://localhost:8080/api/competition").success(
+PwitterControllers.controller('CompetitionListController', function($scope, $http, $location) {
+	$http.get(URI + "competition").success(
 			function(response) {
 				$scope.competitions = response;
 
 				$scope.add = function(data) {
-					debugger;
+					$location.path('/add');
 				};
 				$scope.edit = function(data) {
-					debugger;
+					$location.path('/edit/'+data.id);
 				};
 				$scope.erase = function(data) {
 					$http.delete(
-							"http://localhost:8080/api/competition/" + data.id)
+							URI + "competition/" + data.id)
 							.success(function(response) {
-								$http.get("http://localhost:8080/api/competition").success(function(response){
+								$http.get(URI + "competition").success(function(response){
 									$scope.competitions = response;
 								});
 								$scope.competition=undefined;
 							});
 				};
 				$scope.detail = function(data) {
-					   $scope.changeRoute('#/detail/'+data.id);
+					$location.path('/detail/'+data.id);
 				};
 			});
 });
 
-PwitterControllers.controller('CompetitionDetailController', function($scope, $http, $routeParams) {
+PwitterControllers.controller('CompetitionAddController', function($scope, $http, $routeParams) {
 	$http.get(
-			"http://localhost:8080/api/competition/" + $routeParams.competititonID)
+			URI + "sports")
+			.success(function(response) {
+				$scope.sports=response;
+			});
+	$http.get(
+			URI + "countries")
+			.success(function(response) {
+				$scope.countries=response;
+			});
+	$scope.processForm = function(data){
+        $http.post(URI + "competition", JSON.stringify($scope.form)).success(function(response){
+        	$scope.result = response.mensaje;
+        });
+	};
+});
+
+PwitterControllers.controller('CompetitionEditController', function($scope, $http, $routeParams) {
+	$http.get(
+			URI + "sports")
+			.success(function(response) {
+				$scope.sports=response;
+			});
+	$http.get(
+			URI + "countries")
+			.success(function(response) {
+				$scope.countries=response;
+			});
+	$http.get(
+			URI + "competition/" + $routeParams.competititonID)
 			.success(function(response) {
 				$scope.competition=response;
-				$scope.closeDetail=function(){
-					$scope.competition=undefined;
-				};
+			});
+	$scope.processForm = function(data){
+        $http.put(URI + "competition", JSON.stringify($scope.competition)).success(function(response){
+        	$scope.result = response.mensaje;
+        });
+	};
+});
+
+PwitterControllers.controller('CompetitionDetailController', function($scope, $http, $routeParams) {
+	$http.get(
+			URI + "competition/" + $routeParams.competititonID)
+			.success(function(response) {
+				$scope.competition=response;
 			});
 });
 
