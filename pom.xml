@@ -137,7 +137,6 @@
 
 	<modules>
 		<module>pwitter.view</module>
-		<module>pwitter.controller</module>
 		<module>pwitter.rest</module>
 		<module>pwitter.model</module>
 	</modules>
