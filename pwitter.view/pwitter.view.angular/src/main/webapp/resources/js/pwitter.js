@@ -40,10 +40,13 @@ PwitterControllers.controller('CompetitionAddController', function($scope, $http
 				$scope.countries=response;
 			});
 	$scope.processForm = function(data){
-        $http.post(URI + "competition", JSON.stringify($scope.form)).success(function(response){
+        $http.post(URI + "competition", angular.toJson($scope.competition)).success(function(response){
         	$scope.result = response.mensaje;
         });
 	};
+	$scope.addMatch = function(){
+		alert("Añado partido");
+	}
 });
 
 PwitterControllers.controller('CompetitionEditController', function($scope, $http, $routeParams) {
@@ -58,15 +61,23 @@ PwitterControllers.controller('CompetitionEditController', function($scope, $htt
 				$scope.countries=response;
 			});
 	$http.get(
+			URI + "results")
+			.success(function(response) {
+				$scope.results=response;
+			});
+	$http.get(
 			URI + "competition/" + $routeParams.competititonID)
 			.success(function(response) {
 				$scope.competition=response;
 			});
 	$scope.processForm = function(data){
-        $http.put(URI + "competition", JSON.stringify($scope.competition)).success(function(response){
+        $http.put(URI + "competition", angular.toJson($scope.competition)).success(function(response){
         	$scope.result = response.mensaje;
         });
 	};
+	$scope.addMatch = function(){
+		alert("Añado partido");
+	}
 });
 
 PwitterControllers.controller('CompetitionDetailController', function($scope, $http, $routeParams) {
