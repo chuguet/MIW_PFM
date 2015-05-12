@@ -9,6 +9,7 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Component;
 
 import es.upm.miw.pwitter.model.beans.Competition;
+import es.upm.miw.pwitter.model.beans.Match;
 import es.upm.miw.pwitter.model.exceptions.CompetitionDeleteException;
 import es.upm.miw.pwitter.model.exceptions.CompetitionInsertException;
 import es.upm.miw.pwitter.model.exceptions.CompetitionUpdateException;
@@ -36,8 +37,9 @@ public class HandlerCompetitions implements IHandlerCompetitions {
 	}
 
 	public void addCompetition(Competition competition) {
-		Integer id = this.getLastCorrectId();
+		Integer id = this.getLastCorrectCompetitionId();
 		competition.setId(id);
+		this.setIdsToMatchs(competition);
 		boolean insertCorrectly = this.competitions.add(competition);
 		if (insertCorrectly == false) {
 			throw new CompetitionInsertException(
@@ -45,7 +47,15 @@ public class HandlerCompetitions implements IHandlerCompetitions {
 		}
 	}
 
-	private Integer getLastCorrectId() {
+	private void setIdsToMatchs(Competition competition) {
+		for (Match match : competition.getMatchs()) {
+			if (match.getId() == null) {
+				match.setId(this.getLastCorrectMatchId());
+			}
+		}
+	}
+
+	private Integer getLastCorrectCompetitionId() {
 		Integer id = 1;
 		for (Competition competition : this.competitions) {
 			if (competition.getId() > id) {
@@ -54,6 +64,26 @@ public class HandlerCompetitions implements IHandlerCompetitions {
 		}
 		id++;
 		return id;
+	}
+
+	private Integer getLastCorrectMatchId() {
+		Integer id = 1;
+		Set<Match> matchs = this.getAllMatchs();
+		for (Match match : matchs) {
+			if (match.getId() > id) {
+				id = match.getId();
+			}
+		}
+		id++;
+		return id;
+	}
+
+	private Set<Match> getAllMatchs() {
+		Set<Match> matchs = new HashSet<Match>();
+		for (Competition competition : this.competitions) {
+			matchs.addAll(competition.getMatchs());
+		}
+		return matchs;
 	}
 
 	public void addAllCompetition(Set<Competition> listCompetitions) {

@@ -2,7 +2,7 @@
 	<form ng-submit="processForm()" class="form-horizontal">
 		<input type="hidden" ng-model="competition.id">
 		
-		<h3 class="col-sm-12">Competition #{{competition.id}}</h3>
+		<h3 class="col-sm-12">Competition</h3>
 
 		<div class="form-group">
 			<label for="name" class="col-sm-2 control-label">Name: </label>
@@ -13,7 +13,7 @@
 		<div class="form-group">
 			<label for="sports" class="col-sm-2 control-label">Sport: </label> 
 			<div class="col-sm-6">
-				<select required id="sports" ng-model="competition.sport" ng-selected="sport" ng-options="sport for sport in sports">
+				<select required ng-model="competition.sport" ng-selected="sport" ng-options="sport for sport in sports">
 					<option value="">Seleccione un deporte</option>
 				</select>
 		    </div>
@@ -21,9 +21,44 @@
 		<div class="form-group">
 			<label for="countries" class="col-sm-2 control-label">Country: </label> 
 			<div class="col-sm-6">
-				<select required id="countries" ng-model="competition.country" ng-selected="country" ng-options="country for country in countries">
+				<select required ng-model="competition.country" ng-selected="country" ng-options="country for country in countries">
 					<option value="">Seleccione un pais</option>
 				</select>
+			</div>
+		</div>
+		
+		<div ng-repeat="match in competition.matchs" class="form-group">
+			
+			<h4 class="col-sm-12">Match</h4>
+			
+			<div class="row">
+				<label for="name" class="col-sm-2 control-label">Local: </label>
+			    <div class="col-sm-6">
+					<input type="text" class="form-control" ng-model="match.local.name">
+				</div>
+			</div>
+			
+			<div class="row">
+				<label for="name" class="col-sm-2 control-label">Visitor: </label>
+			    <div class="col-sm-6">
+					<input type="text" class="form-control" ng-model="match.visitor.name">
+				</div>
+			</div>
+			
+			<div class="row">
+				<label for="name" class="col-sm-2 control-label">Date: </label>
+			    <div class="col-sm-6">
+					<input type="text" class="form-control" ng-model="match.date">
+				</div>
+			</div>
+			
+			<div class="row">
+				<label for="name" class="col-sm-2 control-label">Result: </label>
+				<div class="col-sm-6">
+				    <select ng-model="match.result" ng-selected="result" ng-options="result for result in results">
+						<option value="">Seleccione un resultado</option>
+					</select>
+				</div>
 			</div>
 		</div>
 		

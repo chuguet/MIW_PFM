@@ -39,13 +39,30 @@ PwitterControllers.controller('CompetitionAddController', function($scope, $http
 			.success(function(response) {
 				$scope.countries=response;
 			});
+	$http.get(
+			URI + "results")
+			.success(function(response) {
+				$scope.results=response;
+			});
 	$scope.processForm = function(data){
         $http.post(URI + "competition", angular.toJson($scope.competition)).success(function(response){
         	$scope.result = response.mensaje;
         });
 	};
 	$scope.addMatch = function(){
-		alert("Añado partido");
+		if(!$scope.competition) {
+			$scope.competition = {
+				matchs: new Array()
+			};
+		} else if(!$scope.competition.matchs){
+			$scope.competition.matchs = new Array();
+		}
+		$scope.competition.matchs.push({
+			result:null,
+			date:null,
+			local:null,
+			visitor:null
+		});
 	}
 });
 
