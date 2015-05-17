@@ -37,8 +37,10 @@ public class HandlerCompetitions implements IHandlerCompetitions {
 	}
 
 	public void addCompetition(Competition competition) {
-		Integer id = this.getLastCorrectCompetitionId();
-		competition.setId(id);
+		if (competition.getId() == null) {
+			Integer id = this.getLastCorrectCompetitionId();
+			competition.setId(id);
+		}
 		this.setIdsToMatchs(competition);
 		boolean insertCorrectly = this.competitions.add(competition);
 		if (insertCorrectly == false) {
