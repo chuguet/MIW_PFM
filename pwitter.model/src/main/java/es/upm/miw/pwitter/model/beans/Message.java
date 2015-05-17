@@ -2,6 +2,10 @@ package es.upm.miw.pwitter.model.beans;
 
 public class Message {
 
+	public Message() {
+
+	}
+
 	public Message(String mensaje, Boolean correcto) {
 		this.mensaje = mensaje;
 		this.correcto = correcto;

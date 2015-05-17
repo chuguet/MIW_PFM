@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pageflow:Pageflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf14317958679280" configfile="/pwitter.view.pfaces/src/main/webapp/WEB-INF/faces-config.xml">
+  <nodes xsi:type="pageflow:PFPage" name="index.xhtml" x="122" y="370" id="pf14318616416150" referenceLink="//@navigationRule.0/@fromViewId|" outlinks="pf14318616416161 pf14318616416162" path="/index.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="views/listCompetitions.xhtml" x="338" y="178" id="pf14318616416163" referenceLink="//@navigationRule.0/@navigationCase.0/@toViewId|" inlinks="pf14318616416161" path="/views/listCompetitions.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="register.xhtml" x="338" y="562" id="pf14318616416174" referenceLink="//@navigationRule.0/@navigationCase.1/@toViewId|" inlinks="pf14318616416162" path="/register.xhtml"/>
+  <links id="pf14318616416161" target="pf14318616416163" source="pf14318616416150" outcome="listCompetitions"/>
+  <links id="pf14318616416162" target="pf14318616416174" source="pf14318616416150" outcome="register"/>
+</pageflow:Pageflow>

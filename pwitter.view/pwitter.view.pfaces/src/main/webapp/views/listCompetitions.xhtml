@@ -1,0 +1,45 @@
+<ui:composition template="/templates/layout.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+	<ui:define name="content">
+
+		<f:event listener="#{listCompetitionsView.update}"
+			type="preRenderComponent" />
+
+		<h:form id="listCompetitionFrom">
+			<p:dataTable id="dataTable"
+				value="#{listCompetitionsView.competitionList}" var="competition"
+				headerClass="order-table-header"
+				rowClasses="order-table-odd-row,order-table-even-row"
+				sortMode="multiple">
+				<f:facet name="header">Competitions</f:facet>
+				<p:column headerText="Id" sortBy="#{competition.id}">
+					<h:outputText value="#{competition.id}" />
+				</p:column>
+				<p:column headerText="Competition Name" sortBy="#{competition.name}">
+					<h:outputText value="#{competition.name}" />
+				</p:column>
+				<p:column headerText="Country" sortBy="#{competition.country}">
+					<h:outputText value="#{competition.country}" />
+				</p:column>
+				<p:column headerText="Sport" sortBy="#{competition.sport}">
+					<h:outputText value="#{competition.sport}" />
+				</p:column>
+				<p:column headerText="Actions" tyle="width:32px;text-align: center">
+					<p:commandButton icon="ui-icon-pencil" title="Edit" update="dataTable"
+						actionListener="#{listCompetitionsView.editAction(competition)}" />
+					<p:commandButton icon="ui-icon-trash" title="Delete"
+						update=":listCompetitionFrom:dataTable"
+						action="#{listCompetitionsView.removeAction(competition.id)}"/>
+					<p:commandButton icon="ui-icon-info" title="Details"
+						update=""
+						actionListener="#{listCompetitionsView.removeAction(competition)}" />	
+				</p:column>
+			</p:dataTable>
+		</h:form>
+
+	</ui:define>
+</ui:composition>

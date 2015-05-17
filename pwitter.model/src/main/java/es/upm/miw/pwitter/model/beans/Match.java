@@ -1,8 +1,9 @@
 package es.upm.miw.pwitter.model.beans;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Match {
+public class Match implements Serializable {
 
 	public Match() {
 	}

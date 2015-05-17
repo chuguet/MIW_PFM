@@ -38,6 +38,7 @@
 		<javax.inject.version>1</javax.inject.version>
 		<junit.version>4.11</junit.version>
 		<javax.servlet.api.version>3.0.1</javax.servlet.api.version>
+		<javax.javaee.api.version>7.0</javax.javaee.api.version>
 		<log4j.version>2.0.1</log4j.version>
 	</properties>
 
@@ -62,6 +63,11 @@
 				<groupId>javax.servlet</groupId>
 				<artifactId>javax.servlet-api</artifactId>
 				<version>${javax.servlet.api.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>javax</groupId>
+				<artifactId>javaee-api</artifactId>
+				<version>${javax.javaee.api.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.glassfish</groupId>

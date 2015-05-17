@@ -1,6 +1,8 @@
 package es.upm.miw.pwitter.model.beans;
 
-public class Participant {
+import java.io.Serializable;
+
+public class Participant implements Serializable {
 
 	private String name;
 
