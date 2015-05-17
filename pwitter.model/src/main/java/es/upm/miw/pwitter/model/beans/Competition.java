@@ -1,9 +1,10 @@
 package es.upm.miw.pwitter.model.beans;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Competition {
+public class Competition implements Serializable {
 
 	public Competition() {
 
