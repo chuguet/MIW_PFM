@@ -64,6 +64,9 @@ PwitterControllers.controller('CompetitionAddController', function($scope, $http
 			visitor:null
 		});
 	}
+	$scope.removeMatch = function(){
+		$scope.competition.matchs.pop();
+	};
 });
 
 PwitterControllers.controller('CompetitionEditController', function($scope, $http, $routeParams) {
@@ -93,8 +96,23 @@ PwitterControllers.controller('CompetitionEditController', function($scope, $htt
         });
 	};
 	$scope.addMatch = function(){
-		alert("Añado partido");
-	}
+		if(!$scope.competition) {
+			$scope.competition = {
+				matchs: new Array()
+			};
+		} else if(!$scope.competition.matchs){
+			$scope.competition.matchs = new Array();
+		}
+		$scope.competition.matchs.push({
+			result:null,
+			date:null,
+			local:null,
+			visitor:null
+		});
+	};
+	$scope.removeMatch = function(){
+		$scope.competition.matchs.pop();
+	};
 });
 
 PwitterControllers.controller('CompetitionDetailController', function($scope, $http, $routeParams) {

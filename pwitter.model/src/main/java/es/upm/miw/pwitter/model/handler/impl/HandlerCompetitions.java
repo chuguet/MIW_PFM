@@ -106,7 +106,7 @@ public class HandlerCompetitions implements IHandlerCompetitions {
 			throw new CompetitionUpdateException(
 					"La competition no se ha actualizado porque no exisitia");
 		} else {
-			this.competitions.add(competition);
+			this.addCompetition(competition);
 		}
 	}
 

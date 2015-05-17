@@ -66,6 +66,7 @@
 		    <div class="col-sm-offset-2 col-sm-10">
 				<button type="submit" class="btn btn-success">Submit</button>
 				<button type="button" class="btn btn-info" ng-click=addMatch()>Add match</button>
+				<button type="button" class="btn btn-danger" ng-show="competition.matchs && competition.matchs.length>0" ng-click=removeMatch()>Remove match</button>
 		    </div>
 	    </div>
 	</form>
