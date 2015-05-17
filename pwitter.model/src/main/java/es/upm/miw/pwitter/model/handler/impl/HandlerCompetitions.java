@@ -48,9 +48,11 @@ public class HandlerCompetitions implements IHandlerCompetitions {
 	}
 
 	private void setIdsToMatchs(Competition competition) {
+		Integer idMatch = this.getLastCorrectMatchId();
 		for (Match match : competition.getMatchs()) {
 			if (match.getId() == null) {
-				match.setId(this.getLastCorrectMatchId());
+				match.setId(idMatch);
+				idMatch++;
 			}
 		}
 	}
