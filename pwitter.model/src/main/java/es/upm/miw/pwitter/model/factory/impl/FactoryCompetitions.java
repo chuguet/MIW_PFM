@@ -1,4 +1,4 @@
-package es.upm.miw.pwitter.model.handler;
+package es.upm.miw.pwitter.model.factory.impl;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -20,9 +20,10 @@ import es.upm.miw.pwitter.model.beans.Participant;
 import es.upm.miw.pwitter.model.beans.Result;
 import es.upm.miw.pwitter.model.beans.Sport;
 import es.upm.miw.pwitter.model.exceptions.CompetitionCreateException;
+import es.upm.miw.pwitter.model.factory.IFactoryCompetitions;
 
 @Component
-public class FactoryCompetitions {
+class FactoryCompetitions implements IFactoryCompetitions {
 
 	private final static Log LOG = LogFactory.getLog(FactoryCompetitions.class);
 

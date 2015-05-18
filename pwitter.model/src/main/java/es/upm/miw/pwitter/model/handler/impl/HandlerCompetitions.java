@@ -13,14 +13,14 @@ import es.upm.miw.pwitter.model.beans.Match;
 import es.upm.miw.pwitter.model.exceptions.CompetitionDeleteException;
 import es.upm.miw.pwitter.model.exceptions.CompetitionInsertException;
 import es.upm.miw.pwitter.model.exceptions.CompetitionUpdateException;
-import es.upm.miw.pwitter.model.handler.FactoryCompetitions;
+import es.upm.miw.pwitter.model.factory.IFactoryCompetitions;
 import es.upm.miw.pwitter.model.handler.IHandlerCompetitions;
 
 @Component
-public class HandlerCompetitions implements IHandlerCompetitions {
+class HandlerCompetitions implements IHandlerCompetitions {
 
 	@Inject
-	private FactoryCompetitions factoryCompetitions;
+	private IFactoryCompetitions factoryCompetitions;
 
 	private final Set<Competition> competitions = new HashSet<Competition>();
 
