@@ -41,7 +41,9 @@ class HandlerCompetitions implements IHandlerCompetitions {
 			Integer id = this.getLastCorrectCompetitionId();
 			competition.setId(id);
 		}
-		this.setIdsToMatchs(competition);
+		if (competition.getMatchs() != null) {
+			this.setIdsToMatchs(competition);
+		}
 		boolean insertCorrectly = this.competitions.add(competition);
 		if (insertCorrectly == false) {
 			throw new CompetitionInsertException(
