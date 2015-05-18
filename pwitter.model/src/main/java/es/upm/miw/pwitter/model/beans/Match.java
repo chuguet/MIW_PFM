@@ -1,9 +1,10 @@
 package es.upm.miw.pwitter.model.beans;
 
-import java.io.Serializable;
 import java.util.Date;
 
-public class Match implements Serializable {
+public class Match implements PwitterModel {
+
+	private static final long serialVersionUID = 3484125248881489474L;
 
 	public Match() {
 	}

@@ -1,10 +1,11 @@
 package es.upm.miw.pwitter.model.beans;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Competition implements Serializable {
+public class Competition implements PwitterModel {
+
+	private static final long serialVersionUID = 8215846435914930905L;
 
 	public Competition() {
 
