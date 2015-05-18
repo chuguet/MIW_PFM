@@ -1,0 +1,87 @@
+[
+	{
+		"id":1,
+		"name": "Bundesliga",
+		"country": "ALEMANIA",
+		"sport": "FUTBOL",
+		"matchs": [
+			{
+				"id":1,
+				"date":"20/05/2016 22:00",
+				"local": {
+					"name":"Hamburgo"
+				},
+				"visitor":{
+					"name":"Schalke 04"
+				},
+				"result":"SIN_DISPUTAR"
+			},{
+				"id":2,
+				"date":"10/05/2014 21:00",
+				"local": {
+					"name":"Hannover 96"
+				},
+				"visitor":{
+					"name":"Bayer Munich"
+				},
+				"result":"VICTORIA_LOCAL"
+			},{
+				"id":3,
+				"date":"20/05/2013 12:00",
+				"local": {
+					"name":"Borussia Dortmund"
+				},
+				"visitor":{
+					"name":"Werder Bremen"
+				},
+				"result":"EMPATE"
+			}
+		]
+	},{
+		"id":2,
+		"name": "Calcio",
+		"country": "ITALIA",
+		"sport": "FUTBOL",
+		"matchs": [
+			{
+				"id":4,
+				"date":"20/05/2013 22:00",
+				"local": {
+					"name":"Juventus"
+				},
+				"visitor":{
+					"name":"Napoles"
+				},
+				"result":"VICTORIA_LOCAL"
+			},{
+				"id":5,
+				"date":"20/05/2012 21:00",
+				"local": {
+					"name":"Milan AC"
+				},
+				"visitor":{
+					"name":"Palermo"
+				},
+				"result":"VICTORIA_VISITANTE"
+			}
+		]
+	},{
+		"id":3,
+		"name": "Liga Endesa",
+		"country": "ESPANA",
+		"sport": "BALONCESTO",
+		"matchs": [
+			{
+				"id":6,
+				"date":"12/05/2012 10:20",
+				"local": {
+					"name":"Unicaja"
+				},
+				"visitor":{
+					"name":"Estudiantes"
+				},
+				"result":"VICTORIA_VISITANTE"
+			}
+		]
+	}
+]
