@@ -1,19 +1,19 @@
-var GuitarApp = angular.module('PwitterApp',
+var PwitterApplication = angular.module('PwitterApp',
 		[ 'ngRoute', 'PwitterControllers' ]);
 
-GuitarApp.config([ '$routeProvider', function($routeProvider) {
+PwitterApplication.config([ '$routeProvider', function($routeProvider) {
 	$routeProvider.when('/list', {
 		templateUrl : 'views/listCompetitions.html',
-		controller : 'CompetitionListController'
+		controller : pwitter.controllers.listCompetitionController
 	}).when('/detail/:competititonID', {
 		templateUrl : 'views/detailCompetition.html',
-		controller : 'CompetitionDetailController'
+		controller : pwitter.controllers.detailCompetitionController
 	}).when('/add', {
 		templateUrl : 'views/addCompetition.html',
-		controller : 'CompetitionAddController'
+		controller : pwitter.controllers.addCompetitionController
 	}).when('/edit/:competititonID', {
 		templateUrl : 'views/editCompetition.html',
-		controller : 'CompetitionEditController'
+		controller : pwitter.controllers.editCompetitionController
 	}).otherwise({
 		redirectTo : '/list'
 	});
