@@ -1,0 +1,75 @@
+<ui:composition template="/templates/layout.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+	xmlns:p="http://primefaces.org/ui">
+	<ui:define name="content">
+		<h:form id="addForm">
+			<p:panel id="addPanel"
+				header="Competition #{addCompetition.competition.id}"
+				style="margin-bottom:10px;">
+				<p:messages id="messages" />
+				<h:panelGrid columns="3" cellpadding="5">
+					<p:outputLabel for="editName" value="Name:" />
+					<p:inputText id="editName"
+						value="#{addCompetition.competition.name}" required="true"
+						label="editName">
+					</p:inputText>
+					<p:message for="editName" />
+					<p:outputLabel for="editSport" value="Sport:" />
+					<p:selectOneMenu id="editSport"
+						value="#{addCompetition.competition.sport}" required="true">
+						<f:selectItem itemLabel="Select One" itemValue="" />
+						<f:selectItems value="#{data.sports}" />
+					</p:selectOneMenu>
+					<p:message for="editSport" />
+					<p:outputLabel for="editCountry" value="Country:" />
+					<p:selectOneMenu id="editCountry"
+						value="#{addCompetition.competition.country}" required="true">
+						<f:selectItem itemLabel="Select One" itemValue="" />
+						<f:selectItems value="#{data.countries}" />
+					</p:selectOneMenu>
+					<p:message for="editCountry" />
+				</h:panelGrid>
+				<ui:repeat var="matchValue"
+					value="#{addCompetition.competition.matchs}">
+					<p:panel id="matchPanel" header="Match #{matchValue.id}"
+						style="margin-bottom:10px;">
+						<h:panelGrid columns="3" cellpadding="5">
+							<p:outputLabel for="editLocal" value="Local:" />
+							<p:inputText id="editLocal" value="#{matchValue.local.name}"
+								label="editLocal">
+							</p:inputText>
+							<p:message for="editLocal" />
+							<p:outputLabel for="editVisitor" value="Visitor:" />
+							<p:inputText id="editVisitor" value="#{matchValue.visitor.name}"
+								label="editVisitor">
+							</p:inputText>
+							<p:message for="editVisitor" />
+							<p:outputLabel for="editDate" value="Date:" />
+							<p:calendar id="editDate" value="#{matchValue.date}"
+								pattern="MM/dd/yyyy HH:mm" />
+							<p:message for="editDate" />
+							<p:outputLabel for="editResult" value="Result:" />
+							<p:selectOneMenu id="editResult" value="#{matchValue.result}"
+								required="true">
+								<f:selectItems value="#{data.results}" />
+							</p:selectOneMenu>
+							<p:message for="editResult" />
+						</h:panelGrid>
+					</p:panel>
+				</ui:repeat>
+				<p:commandButton value="Submit" update="addPanel"
+					action="#{addCompetition.process}" style="margin-right:20px;" />
+				<p:commandButton value="Add Match" update="addPanel"
+					action="#{addCompetition.addMatch}" style="margin-right:20px;" />
+				<p:commandButton value="Remove Match"
+					rendered="#{fn:length(addCompetition.competition.matchs) > 0}"
+					update="addPanel" action="#{addCompetition.removeMatch}"
+					style="margin-right:20px;" />
+			</p:panel>
+		</h:form>
+	</ui:define>
+</ui:composition>

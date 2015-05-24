@@ -1,11 +1,11 @@
 package es.upm.miw.pwitter.view.pfaces.beans;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Date;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.ViewScoped;
 
 import org.apache.commons.logging.Log;
@@ -13,21 +13,35 @@ import org.apache.commons.logging.LogFactory;
 
 import es.upm.miw.pwitter.model.beans.Competition;
 import es.upm.miw.pwitter.model.beans.Match;
-import es.upm.miw.pwitter.model.beans.Message;
 import es.upm.miw.pwitter.model.beans.Participant;
 import es.upm.miw.pwitter.model.beans.Result;
 import es.upm.miw.pwitter.rest.core.uris.Uris;
 
-@ManagedBean(name = "addCompetition")
+@ManagedBean(name = "editCompetition")
 @ViewScoped
-public class AddCompetitionView extends AbstractCompetitionView implements
+public class EditCompetitionView extends AbstractCompetitionView implements
 		Serializable {
 
-	private final static Log LOG = LogFactory.getLog(AddCompetitionView.class);
+	private final static Log LOG = LogFactory.getLog(EditCompetitionView.class);
 
 	private static final long serialVersionUID = 1L;
 
+	@ManagedProperty(value = "#{competitionList}")
+	private ListCompetitionsView listCompetition;
+
 	private Competition competition;
+
+	public EditCompetitionView() {
+		super();
+	}
+
+	public ListCompetitionsView getListCompetition() {
+		return listCompetition;
+	}
+
+	public void setListCompetition(ListCompetitionsView listCompetition) {
+		this.listCompetition = listCompetition;
+	}
 
 	public Competition getCompetition() {
 		return competition;
@@ -39,9 +53,8 @@ public class AddCompetitionView extends AbstractCompetitionView implements
 
 	@PostConstruct
 	public void update() {
-		LOG.info("Update Add Competition View");
-		competition = new Competition();
-		competition.setMatchs(new ArrayList<Match>());
+		LOG.info("Update Edit view");
+		competition = listCompetition.getSelectedCompetition();
 	}
 
 	public String removeMatch() {
@@ -54,16 +67,14 @@ public class AddCompetitionView extends AbstractCompetitionView implements
 		LOG.info("Add generic Match");
 		competition.getMatchs().add(
 				new Match(competition.getMatchs().size() + 1, new Participant(
-						""), new Participant(""), new Date(),
+						" "), new Participant(" "), new Date(),
 						Result.SIN_DISPUTAR));
 		return null;
 	}
 
-	public String process() {
-		LOG.info("Add Competition action");
-		this.restClient.postForObject(API_URI + Uris.COMPETITION, competition,
-				Message.class);
-		return null;
+	public void process() {
+		LOG.info("Process update data: " + competition.toString());
+		restClient.put(API_URI + Uris.COMPETITION, competition);
 	}
 
 }
