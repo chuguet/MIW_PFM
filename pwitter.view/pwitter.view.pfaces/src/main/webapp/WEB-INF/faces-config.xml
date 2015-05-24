@@ -36,6 +36,14 @@
 		</navigation-case>
 	</navigation-rule>
 
+	<navigation-rule>
+		<from-view-id>/views/detailCompetition.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>listCompetitions</from-outcome>
+			<to-view-id>/views/listCompetitions.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+
 	<application>
 		<!-- <el-resolver>org.springframework.web.jsf.el.SpringBeanFacesELResolver</el-resolver> -->
 		<locale-config>

@@ -1,0 +1,56 @@
+<ui:composition template="/templates/layout.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+	xmlns:p="http://primefaces.org/ui">
+	<ui:define name="content">
+		<p:panel id="competitionPanel"
+			header="Competition Detail"
+			style="margin-bottom:10px;">
+			<p:dataTable id="competitionTable"
+				value="#{editCompetition.competition}" var="competition"
+				selectionMode="single" rowKey="#{competition.name}"
+				headerClass="order-table-header"
+				rowClasses="order-table-odd-row,order-table-even-row"
+				sortMode="multiple">
+				<p:column headerText="Competition Name">
+					<h:outputText value="#{competition.name}" />
+				</p:column>
+
+				<p:column headerText="Competition Country">
+					<h:outputText value="#{competition.country}" />
+				</p:column>
+
+				<p:column headerText="Competition Sport">
+					<h:outputText value="#{competition.sport}" />
+				</p:column>
+			</p:dataTable>
+			<p:dataTable var="matchValue"
+				value="#{editCompetition.competition.matchs}">
+				<f:facet name="header">Matchs Detail</f:facet>
+				<p:column headerText="Id">
+					<h:outputText value="#{matchValue.id}" />
+				</p:column>
+
+				<p:column headerText="Match Date">
+					<h:outputText value="#{matchValue.date}" />
+				</p:column>
+
+				<p:column headerText="Result">
+					<h:outputText value="#{matchValue.result}" />
+				</p:column>
+
+				<p:column headerText="Local">
+					<h:outputText value="#{matchValue.local.name}" />
+				</p:column>
+				<p:column headerText="Visitor">
+					<h:outputText value="#{matchValue.visitor.name}" />
+				</p:column>
+			</p:dataTable>
+			<p:commandButton value="Back" update="competitionPanel"
+				action="listCompetitions" style="margin-top:10px;" />
+		</p:panel>
+	</ui:define>
+</ui:composition>

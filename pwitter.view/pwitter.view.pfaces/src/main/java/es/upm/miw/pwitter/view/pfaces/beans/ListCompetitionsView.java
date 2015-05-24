@@ -64,6 +64,8 @@ public class ListCompetitionsView extends AbstractCompetitionView implements
 	}
 
 	public String detailAction(Competition Competition) {
+		LOG.info("DetailAction: " + Competition.toString());
+		setSelectedCompetition(Competition);
 		return "detailCompetition";
 	}
 

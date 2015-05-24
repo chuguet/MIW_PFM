@@ -29,6 +29,10 @@ public class AddCompetitionView extends AbstractCompetitionView implements
 
 	private Competition competition;
 
+	public AddCompetitionView() {
+		super();
+	}
+
 	public Competition getCompetition() {
 		return competition;
 	}
