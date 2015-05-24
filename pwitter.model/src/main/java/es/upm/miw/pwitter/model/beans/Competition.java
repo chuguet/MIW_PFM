@@ -1,11 +1,22 @@
 package es.upm.miw.pwitter.model.beans;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Competition implements PwitterModel {
+public class Competition implements Serializable {
 
 	private static final long serialVersionUID = 8215846435914930905L;
+
+	private Integer id;
+
+	private transient List<Match> matchs;
+
+	private String name;
+
+	private Country country;
+
+	private Sport sport;
 
 	public Competition() {
 
@@ -27,16 +38,6 @@ public class Competition implements PwitterModel {
 		this(id, name, country, sport);
 		this.matchs = matchs;
 	}
-
-	private Integer id;
-
-	private List<Match> matchs;
-
-	private String name;
-
-	private Country country;
-
-	private Sport sport;
 
 	public List<Match> getMatchs() {
 		return matchs;
@@ -70,6 +71,21 @@ public class Competition implements PwitterModel {
 		this.sport = sport;
 	}
 
+	public void addMatch(Match match) {
+		if (this.matchs == null) {
+			this.matchs = new ArrayList<Match>();
+		}
+		this.matchs.add(match);
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -95,19 +111,10 @@ public class Competition implements PwitterModel {
 		return true;
 	}
 
-	public void addMatch(Match match) {
-		if (this.matchs == null) {
-			this.matchs = new ArrayList<Match>();
-		}
-		this.matchs.add(match);
-	}
-
-	public Integer getId() {
-		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
+	@Override
+	public String toString() {
+		return "Competition [id=" + id + ", name=" + name + ", country="
+				+ country + ", sport=" + sport + "]";
 	}
 
 }

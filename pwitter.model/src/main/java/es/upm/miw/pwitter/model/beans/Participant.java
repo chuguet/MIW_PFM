@@ -1,7 +1,8 @@
 package es.upm.miw.pwitter.model.beans;
 
+import java.io.Serializable;
 
-public class Participant implements PwitterModel {
+public class Participant implements Serializable {
 
 	private static final long serialVersionUID = 8430561408111380257L;
 
