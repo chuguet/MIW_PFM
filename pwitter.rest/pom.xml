@@ -19,7 +19,6 @@
 
 	<modules>
 		<module>pwitter.rest.core</module>
-		<module>pwitter.rest.client</module>
 		<module>pwitter.rest.server</module>
 	</modules>
 	
