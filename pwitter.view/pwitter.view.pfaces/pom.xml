@@ -17,17 +17,10 @@
 		<finalName>PWITTER_PRIMEFACES</finalName>
 	</build>
 
-
 	<dependencies>
-
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-core</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>es.upm.miw</groupId>
-			<artifactId>pwitter.rest.client</artifactId>
-			<version>${project.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>es.upm.miw</groupId>
@@ -38,6 +31,10 @@
 			<groupId>es.upm.miw</groupId>
 			<artifactId>pwitter.model</artifactId>
 			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpclient</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>javax</groupId>
