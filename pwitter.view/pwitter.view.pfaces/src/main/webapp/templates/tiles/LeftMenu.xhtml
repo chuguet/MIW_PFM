@@ -6,16 +6,14 @@
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:c="http://java.sun.com/jsp/jstl/core">
 <h:head>
-	<title>Title</title>
+	<title>Pwitter</title>
 </h:head>
 <h:body>
 	<h:form>
 		<p:growl id="messages" />
 		<p:menu style="width:95%">
-			<p:menuitem value="Add Competition" action="/index.xhtml" />
-
-			<p:menuitem value="List Competitions"
-				action="listCompetitions"/>
+			<p:menuitem value="Add Competition" action="addCompetition" />
+			<p:menuitem value="List Competitions" action="listCompetitions" />
 
 		</p:menu>
 	</h:form>

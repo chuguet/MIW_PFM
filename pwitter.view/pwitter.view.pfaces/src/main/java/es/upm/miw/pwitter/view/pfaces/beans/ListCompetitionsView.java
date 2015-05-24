@@ -2,23 +2,27 @@ package es.upm.miw.pwitter.view.pfaces.beans;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
-import java.util.Set;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
-import javax.faces.event.ActionEvent;
+import javax.faces.bean.SessionScoped;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.web.client.RestClientException;
 
 import es.upm.miw.pwitter.model.beans.Competition;
 import es.upm.miw.pwitter.rest.core.uris.Uris;
 
-@ManagedBean
-@ViewScoped
+@ManagedBean(name = "competitionList")
+@SessionScoped
 public class ListCompetitionsView extends AbstractCompetitionView implements
 		Serializable {
+
+	private final static Log LOG = LogFactory
+			.getLog(ListCompetitionsView.class);
 
 	private static final long serialVersionUID = 1L;
 
@@ -32,10 +36,12 @@ public class ListCompetitionsView extends AbstractCompetitionView implements
 
 	@PostConstruct
 	public void update() {
+		LOG.info("Update List view");
 		try {
-			competitionList = new ArrayList<Competition>(
-					restClient.getForObject(API_URI + Uris.COMPETITION,
-							Set.class));
+			Competition[] competitions = restClient.getForObject(API_URI
+					+ Uris.COMPETITION, Competition[].class);
+
+			competitionList = Arrays.asList(competitions);
 		} catch (RestClientException ex) {
 			competitionList = new ArrayList<Competition>();
 		}
@@ -57,16 +63,18 @@ public class ListCompetitionsView extends AbstractCompetitionView implements
 		this.selectedCompetition = selectedCompetition;
 	}
 
-	public String detailAction(ActionEvent actionEvent) {
-		return "competitionDetail";
+	public String detailAction(Competition Competition) {
+		return "detailCompetition";
 	}
 
 	public String editAction(Competition Competition) {
+		LOG.info("EditAction: " + Competition.toString());
 		setSelectedCompetition(Competition);
 		return "editCompetition";
 	}
 
 	public void removeAction(Integer competitionId) {
+		LOG.info("RemoveAction for competition: " + competitionId);
 		restClient.delete(API_URI + Uris.COMPETITION + "/" + competitionId);
 		update();
 	}
