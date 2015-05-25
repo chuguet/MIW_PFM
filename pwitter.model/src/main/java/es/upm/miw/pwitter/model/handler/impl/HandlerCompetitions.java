@@ -62,7 +62,7 @@ class HandlerCompetitions implements IHandlerCompetitions {
 	}
 
 	private Integer getLastCorrectCompetitionId() {
-		Integer id = 1;
+		Integer id = 0;
 		for (Competition competition : this.competitions) {
 			if (competition.getId() > id) {
 				id = competition.getId();
@@ -73,7 +73,7 @@ class HandlerCompetitions implements IHandlerCompetitions {
 	}
 
 	private Integer getLastCorrectMatchId() {
-		Integer id = 1;
+		Integer id = 0;
 		Set<Match> matchs = this.getAllMatchs();
 		for (Match match : matchs) {
 			if (match.getId() > id) {
@@ -87,7 +87,9 @@ class HandlerCompetitions implements IHandlerCompetitions {
 	private Set<Match> getAllMatchs() {
 		Set<Match> matchs = new HashSet<Match>();
 		for (Competition competition : this.competitions) {
-			matchs.addAll(competition.getMatchs());
+			if (competition.getMatchs() != null) {
+				matchs.addAll(competition.getMatchs());
+			}
 		}
 		return matchs;
 	}
