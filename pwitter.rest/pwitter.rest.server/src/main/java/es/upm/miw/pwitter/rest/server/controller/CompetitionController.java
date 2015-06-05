@@ -13,8 +13,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import es.upm.miw.pwitter.model.beans.Competition;
-import es.upm.miw.pwitter.model.beans.Message;
-import es.upm.miw.pwitter.model.exceptions.CompetitionException;
 import es.upm.miw.pwitter.model.handler.IHandlerCompetitions;
 import es.upm.miw.pwitter.rest.core.uris.Uris;
 
@@ -29,17 +27,9 @@ public class CompetitionController {
 	private IHandlerCompetitions handlerCompetitions;
 
 	@RequestMapping(method = RequestMethod.POST)
-	public Message insertCompetition(@RequestBody Competition competition) {
+	public void insertCompetition(@RequestBody Competition competition) {
 		LOG.info("Se va a proceder a insertar una competicion");
-		Message result;
-		try {
-			handlerCompetitions.addCompetition(competition);
-			result = new Message("Competicion insertada correctamente",
-					Boolean.TRUE);
-		} catch (CompetitionException ex) {
-			result = new Message(ex.getMessage(), Boolean.FALSE);
-		}
-		return result;
+		handlerCompetitions.addCompetition(competition);
 	}
 
 	@RequestMapping(method = RequestMethod.GET)
@@ -57,31 +47,15 @@ public class CompetitionController {
 	}
 
 	@RequestMapping(method = RequestMethod.PUT)
-	public Message updateCompetition(@RequestBody Competition competition) {
+	public void updateCompetition(@RequestBody Competition competition) {
 		LOG.info("Se va a proceder a actualizar una competicion");
-		Message result;
-		try {
-			handlerCompetitions.updateCompetition(competition);
-			result = new Message("Competicion actualizada correctamente",
-					Boolean.TRUE);
-		} catch (CompetitionException ex) {
-			result = new Message(ex.getMessage(), Boolean.FALSE);
-		}
-		return result;
+		handlerCompetitions.updateCompetition(competition);
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-	public Message deleteCompetition(@PathVariable("id") Integer id) {
+	public void deleteCompetition(@PathVariable("id") Integer id) {
 		LOG.info("Se va a proceder a borrar una competicion");
-		Message result;
-		try {
-			handlerCompetitions.removeCompetition(new Competition(id));
-			result = new Message("Competicion eliminada correctamente",
-					Boolean.TRUE);
-		} catch (CompetitionException ex) {
-			result = new Message(ex.getMessage(), Boolean.FALSE);
-		}
-		return result;
+		handlerCompetitions.removeCompetition(new Competition(id));
 	}
 
 }
