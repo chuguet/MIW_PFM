@@ -39,8 +39,7 @@ public class CompetitionController {
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	public Competition getCompetitionByNameCountryAndSport(
-			@PathVariable("id") Integer id) {
+	public Competition getCompetitionById(@PathVariable("id") Integer id) {
 		LOG.info("Se recupera una competicion");
 		Competition competition = new Competition(id);
 		return handlerCompetitions.findCompetition(competition);
