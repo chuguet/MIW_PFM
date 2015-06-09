@@ -20,7 +20,7 @@ public class ControllerExceptionHandler {
 	private final static Log LOG = LogFactory
 			.getLog(ControllerExceptionHandler.class);
 
-	private static final String MESSAGE = "msg.error";
+	private static final String MESSAGE = "message";
 
 	@ExceptionHandler(CompetitionException.class)
 	@ResponseStatus(HttpStatus.CONFLICT)

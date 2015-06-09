@@ -1,5 +1,7 @@
 package es.upm.miw.pwitter.rest.server.controller;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Set;
 
 import javax.inject.Inject;
@@ -11,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.view.json.MappingJackson2JsonView;
 
 import es.upm.miw.pwitter.model.beans.Competition;
 import es.upm.miw.pwitter.model.handler.IHandlerCompetitions;
@@ -23,13 +27,16 @@ public class CompetitionController {
 	private final static Log LOG = LogFactory
 			.getLog(CompetitionController.class);
 
+	private static final String MESSAGE = "message";
+
 	@Inject
 	private IHandlerCompetitions handlerCompetitions;
 
 	@RequestMapping(method = RequestMethod.POST)
-	public void insertCompetition(@RequestBody Competition competition) {
+	public ModelAndView insertCompetition(@RequestBody Competition competition) {
 		LOG.info("Se va a proceder a insertar una competicion");
 		handlerCompetitions.addCompetition(competition);
+		return this.getResponse("Competición insertada correctamente");
 	}
 
 	@RequestMapping(method = RequestMethod.GET)
@@ -46,15 +53,24 @@ public class CompetitionController {
 	}
 
 	@RequestMapping(method = RequestMethod.PUT)
-	public void updateCompetition(@RequestBody Competition competition) {
+	public ModelAndView updateCompetition(@RequestBody Competition competition) {
 		LOG.info("Se va a proceder a actualizar una competicion");
 		handlerCompetitions.updateCompetition(competition);
+		return this.getResponse("Competición actualizada correctamente");
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-	public void deleteCompetition(@PathVariable("id") Integer id) {
+	public ModelAndView deleteCompetition(@PathVariable("id") Integer id) {
 		LOG.info("Se va a proceder a borrar una competicion");
 		handlerCompetitions.removeCompetition(new Competition(id));
+		return this.getResponse("Competición borrada correctamente");
+	}
+
+	private ModelAndView getResponse(String msg) {
+		LOG.info(msg);
+		Map<String, Object> jsonMap = new HashMap<String, Object>();
+		jsonMap.put(MESSAGE, msg);
+		return new ModelAndView(new MappingJackson2JsonView(), jsonMap);
 	}
 
 }

@@ -21,7 +21,7 @@ pwitter.PwitterControllers.controller(pwitter.controllers.editCompetitionControl
 			});
 	$scope.processForm = function(data){
         $http.put(pwitter.competitionURI, angular.toJson($scope.competition)).success(function(response){
-        	$scope.result = response.mensaje;
+        	$scope.result = response.message;
         });
 	};
 	$scope.addMatch = function(){
